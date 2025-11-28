@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Admin Agua</title>
+
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+
+<body class="bg-[var(--color-bg)]">
+
+    <!-- Contenedor -->
+    <div class="flex h-screen">
+
+        <!-- Sidebar -->
+        <aside class="w-64 bg-[var(--color-sidebar)] text-white flex flex-col">
+            <div class="p-4 text-2xl font-bold border-b border-gray-700">
+                AdminAgua
+            </div>
+
+            <nav class="flex-1 p-4 space-y-2">
+                <a href="#"
+                   class="block p-3 bg-gray-800/40 rounded-lg hover:bg-gray-700 transition">
+                    Dashboard
+                </a>
+
+                <a href="#"
+                   class="block p-3 bg-gray-800/40 rounded-lg hover:bg-gray-700 transition">
+                    Usuarios
+                </a>
+
+                <a href="#"
+                   class="block p-3 bg-gray-800/40 rounded-lg hover:bg-gray-700 transition">
+                    Solicitudes
+                </a>
+
+                <a href="#"
+                   class="block p-3 bg-gray-800/40 rounded-lg hover:bg-gray-700 transition">
+                    Pagos
+                </a>
+            </nav>
+
+            <div class="p-4">
+                <button class="w-full p-3 bg-red-600 rounded-lg hover:bg-red-700 transition">
+                    Cerrar sesión
+                </button>
+            </div>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="flex-1 p-6">
+
+            <h1 class="text-3xl font-bold mb-6">Bienvenido al Panel</h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Tarjeta -->
+                <div class="p-6 bg-white rounded-xl shadow">
+                    <h2 class="text-xl font-bold mb-2">Usuarios</h2>
+                    <p class="text-gray-600">Administración de usuarios del sistema.</p>
+                </div>
+
+                <div class="p-6 bg-white rounded-xl shadow">
+                    <h2 class="text-xl font-bold mb-2">Solicitudes</h2>
+                    <p class="text-gray-600">Gestión de solicitudes activas.</p>
+                </div>
+
+                <div class="p-6 bg-white rounded-xl shadow">
+                    <h2 class="text-xl font-bold mb-2">Pagos</h2>
+                    <p class="text-gray-600">Control general de pagos.</p>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>
