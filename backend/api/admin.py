@@ -6,3 +6,4 @@ class ContratoAdmin(admin.ModelAdmin):
     list_display = ['id', 'nombres', 'paterno', 'materno', 'estatus']
     list_filter = ['estatus']
     search_fields = ['nombres', 'paterno', 'materno']
+
