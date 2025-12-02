@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('MYSQL_DATABASE', 'appagua'),
-        'USER': os.getenv('MYSQL_USER', 'appuser'),
-        'PASSWORD': os.getenv('MYSQL_PASSWORD', 'appuserpass'),
-        'HOST': os.getenv('MYSQL_HOST', 'db'),
+        'NAME': os.getenv('MYSQL_DATABASE', 'bd_sapam'),
+        'USER': os.getenv('MYSQL_USER', 'root'),
+        'PASSWORD': os.getenv('MYSQL_PASSWORD', ''),
+        'HOST': os.getenv('MYSQL_HOST', 'localhost'),
         'PORT': os.getenv('MYSQL_PORT', '3306'),
         'OPTIONS': {'charset': 'utf8mb4'},
     }
