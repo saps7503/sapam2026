@@ -196,5 +196,19 @@ No necesitas:
 Todo lo hace Docker.
 
 📬 10. Contacto
+-----------RESUMEN PARA GIT CLONE -------
+# App Agua Potable - Django + MySQL + Docker
+
+## 📋 Requisitos Previos
+- Docker Desktop
+- Git
+- Python 3.11+ (solo para desarrollo local)
+
+## 🚀 Inicio Rápido
+
+### 1. Clonar repositorio
+```bash
+git clone https://tu-repositorio.com/app-agua-potable.git
+cd app-agua-potable
 
 Proyecto creado por Saps 

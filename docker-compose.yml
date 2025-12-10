@@ -1,34 +1,31 @@
-version: "3.8"
-
 services:
   db:
     image: mysql:8.0
     container_name: appagua_db
-    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password --skip-log-bin
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: bd_sapam
+      # ¡NO definir MYSQL_ROOT_PASSWORD cuando usas MYSQL_ALLOW_EMPTY_PASSWORD!
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  web:
+    build: ./backend
+    container_name: appagua_web
     env_file:
       - .env
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_ROOT_PASSWORD: ""
-    volumes:
-      - db_data:/var/lib/mysql
-    ports:
-      - "3306:3306"
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-  web:
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
-    container_name: appagua_web
-    restart: unless-stopped
-    env_file:
-      - .env
+      # Django usará estas credenciales para root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
     depends_on:
       db:
         condition: service_healthy
@@ -36,20 +33,7 @@ services:
       - ./backend:/app
     ports:
       - "8000:8000"
-    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: appagua_front
-    restart: unless-stopped
-    volumes:
-      - ./frontend:/app
-    ports:
-      - "5173:5173"
-    environment:
-      - CHOKIDAR_USEPOLLING=true
+    command: sh -c "sleep 10 && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
 
 volumes:
-  db_data:
+  mysql_data:
